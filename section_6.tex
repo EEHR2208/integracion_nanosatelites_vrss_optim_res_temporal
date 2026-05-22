@@ -1,0 +1,27 @@
+\section{Discusión}
+
+\subsection{Implicaciones operativas}
+
+Resulta particularmente llamativo cómo los resultados de simulación trascienden el mero incremento numérico en frecuencia de observación. La integración propuesta transforma el VRSS de una plataforma estática con capacidad de respuesta limitada en un sistema verdaderamente reactivo. 
+
+Aplicaciones como el monitoreo de desastres, la agricultura de precisión y la gestión de recursos hídricos se benefician directamente. Tal como demuestran experiencias con constelaciones de nanosatélites en escenarios reales \cite{Kerrouche2023}, la capacidad de obtener actualizaciones cada pocas horas permite pasar de la cartografía estática a la inteligencia operativa. En el caso venezolano, esto podría significar detectar crecidas del Orinoco con horas de antelación o identificar incendios activos antes de que escapen al control.
+
+No obstante, cabe matizar que esta agilidad exige cambios profundos en los flujos de trabajo de las agencias usuarias. El volumen de datos se multiplica, demandando mayor automatización en el procesamiento y alertas inteligentes. La orquestación entre el segmento VRSS y los nanosatélites requiere protocolos de tasking coordinado que, aunque factibles, representan un salto cultural y técnico no menor.
+
+\subsection{Aspectos económicos y de implementación}
+
+Uno de los desafíos persistentes que surge al analizar propuestas de este tipo radica en su sostenibilidad a largo plazo. Aunque los CubeSats reducen drásticamente el costo por unidad comparado con satélites tradicionales, el despliegue y operación de una constelación completa implica inversiones significativas en desarrollo, lanzamiento y segmento terreno.
+
+Revisando tendencias documentadas en observación terrestre con nanosatélites \cite{Nagel2020}, se observa que el modelo de “más pequeño, más barato y más numeroso” tiende a ofrecer mejor relación costo-beneficio en misiones que priorizan temporalidad. En el contexto propuesto, estimaciones preliminares sugieren que el costo incremental de la constelación híbrida podría recuperarse en menos de tres años mediante la ampliación de servicios y posibles ingresos por datos compartidos con países vecinos.
+
+Lejos de ser un asunto resuelto, persisten riesgos relacionados con la vida útil limitada de los nanosatélites y la necesidad de reemplazos frecuentes. Esto obliga a adoptar estrategias de diseño modular y fabricación en serie que, aunque maduras en otros entornos, requieren adaptación local. La viabilidad técnica parece sólida; la económica dependerá en gran medida de modelos de gobernanza y financiación mixta.
+
+\subsection{Comparación con enfoques alternativos}
+
+Particularmente interesante resulta contrastar la arquitectura híbrida aquí presentada con otras alternativas disponibles. Soluciones puramente basadas en constelaciones grandes (tipo Planet o similares) ofrecen excelente resolución temporal pero sacrifican detalle espacial y control soberano. Por otro lado, la adquisición de un segundo satélite de clase VRSS mejoraría cobertura pero a un costo prohibitivo y sin resolver del todo las limitaciones temporales inherentes a plataformas individuales.
+
+El enfoque híbrido aprovecha la inversión ya realizada en VRSS, complementándola con la flexibilidad de los nanosatélites. Esto genera sinergias difíciles de replicar con sistemas homogéneos. 
+
+Aunque enfoques basados únicamente en procesamiento en la nube o mayor número de estaciones terrestres pueden mitigar parcialmente la latencia, no atacan el problema raíz de la escasa frecuencia de muestreo. La propuesta actual, al combinar ambas capas, ofrece un equilibrio más robusto. Sus limitaciones —principalmente en calibración cruzada y complejidad operativa— parecen manejables frente a las ventajas demostradas en simulación.
+
+En última instancia, esta discusión refuerza la idea de que el futuro de la observación terrestre en países con recursos limitados no pasa por elegir entre alta resolución o alta frecuencia, sino por diseñar arquitecturas inteligentes que integren inteligentemente ambos mundos.

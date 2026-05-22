@@ -1,0 +1,37 @@
+\section{Estado del Arte en Constelaciones de Nanosatélites}
+
+\subsection{Constelaciones comerciales (Planet, etc.)}
+
+Resulta particularmente llamativo cómo el panorama de la observación terrestre ha cambiado drásticamente con la irrupción de constelaciones comerciales basadas en nanosatélites. Planet Labs, con su flota de más de 200 CubeSats Dove, ofrece hoy imágenes diarias de casi toda la superficie terrestre a resoluciones que rondan los 3-5 metros. Casos similares, aunque con enfoques distintos, incluyen Spire Global y sus satélites para datos de radioocultación y AIS, o BlackSky con capacidades de tasking casi en tiempo real.
+
+Aunque estos sistemas entregan volúmenes de datos sin precedentes, el trade-off entre resolución espacial y temporal sigue siendo un factor central. Bussy-Virat et al. demostraron de manera cuantitativa que, en constelaciones GNSS-R, incrementos significativos en la densidad de satélites permiten reducir la revisita de días a horas, aunque a costa de complejidades en el procesamiento y calibración cruzada \cite{BussyVirat2018}. 
+
+\begin{table}[h]
+\centering
+\caption{Comparación de características principales de constelaciones representativas de nanosatélites para EO (datos actualizados a 2025)}
+\label{tab:comparacion_constelaciones}
+\begin{tabular}{lccc}
+\hline
+\textbf{Constelación} & \textbf{Nº Satélites} & \textbf{Revisita} & \textbf{Resolución (m)} \\
+\hline
+Planet (Dove)         & >200                  & <1 día            & 3-5 \\
+BlackSky              & \sim 30               & Horas             & 0.5-1 \\
+Spire                 & >100                  & Variable          & Radioocultación \\
+VRSS-1 (referencia)   & 1                     & 4-7 días          & 2.5-10 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Aplicaciones en monitoreo dinámico}
+
+Uno de los desafíos persistentes que surge al analizar estas tecnologías radica en trasladar la alta frecuencia temporal a valor real en aplicaciones críticas. Resulta revelador observar cómo las constelaciones de CubeSats han demostrado utilidad concreta en el seguimiento de incendios forestales, inundaciones repentinas y cambios en cobertura agrícola \cite{Bouzoukis2025}. 
+
+En muchos casos estudiados, la capacidad de obtener múltiples observaciones diarias permite detectar anomalías que pasarían desapercibidas con sistemas tradicionales de un solo satélite. No obstante, cabe matizar que la menor resolución radiométrica y la mayor variabilidad en la calidad de los datos exigen algoritmos de fusión sofisticados. Bouzoukis et al. destacan precisamente cómo misiones recientes han evolucionado desde demostradores tecnológicos hacia plataformas operativas con aplicaciones en monitoreo ambiental y apoyo humanitario.
+
+\subsection{Brechas en integración con satélites grandes}
+
+Lejos de ser un asunto resuelto, la integración efectiva entre constelaciones de nanosatélites y plataformas de mayor tamaño sigue representando un terreno fértil para investigación. Aunque los sistemas pequeños aportan agilidad temporal, persisten brechas importantes en interoperabilidad de formatos, calibración radiométrica cruzada y orquestación de tareas entre activos heterogéneos.
+
+Particularmente interesante es el trabajo de Chan, quien explora cómo los crosslinks inter-satélite y sistemas de propulsión a bordo pueden reducir drásticamente la latencia en la entrega de información, abriendo la puerta a observación casi en tiempo real \cite{Chan2024}. Sin embargo, estos avances tienden a concentrarse en constelaciones homogéneas, dejando sin resolver el problema de hibridación con satélites como VRSS que operan bajo especificaciones distintas y priorizan resolución espacial sobre frecuencia.
+
+Esta brecha motiva directamente el enfoque propuesto en el presente trabajo: no reemplazar, sino complementar de forma inteligente las capacidades existentes. Las limitaciones identificadas en la literatura actual sugieren que una integración bien diseñada podría superar las restricciones individuales de cada segmento y generar sinergias aún poco exploradas.

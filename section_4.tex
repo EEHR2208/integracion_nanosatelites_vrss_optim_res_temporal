@@ -1,0 +1,50 @@
+\section{Modelado y Optimización de Integración}
+
+\subsection{Modelos de resolución temporal}
+
+Resulta revelador observar cómo el corazón de cualquier sistema híbrido reside en modelar correctamente el balance entre lo que se gana en frecuencia y lo que se mantiene en detalle. Partiendo de principios establecidos en constelaciones distribuidas, se desarrolló un modelo analítico de cobertura temporal que extiende trabajos previos sobre trade-offs espaciales-temporales \cite{BussyVirat2018}.
+
+La función de cobertura propuesta combina la revisita del VRSS con las pasadas oportunistas de la constelación de nanosatélites. Se define como:
+
+\begin{equation}
+C(t) = 1 - \exp\left(-\frac{t}{\tau_{h}}\right) \cdot \left(1 - \frac{N_{ns} \cdot v_{orb} \cdot w_{sw}}{A_{target} \cdot T_{orb}}\right)
+\label{eq:cobertura}
+\end{equation}
+
+donde $\tau_{h}$ representa el tiempo característico de la plataforma híbrida, $N_{ns}$ el número de nanosatélites, $v_{orb}$ la velocidad orbital, $w_{sw}$ el ancho de swath efectivo y $A_{target}$ el área objetivo. La Ecuación~\eqref{eq:cobertura} (Eq. 2) captura de forma compacta la mejora exponencial en continuidad que ofrece la integración.
+
+Este modelo no solo predice la reducción en gaps temporales, sino que también permite identificar regiones donde la complementariedad es más crítica.
+
+\subsection{Algoritmos de optimización multi-objetivo}
+
+Uno de los desafíos persistentes que surge al diseñar estas arquitecturas es reconciliar objetivos frecuentemente contrapuestos: maximizar cobertura temporal, minimizar costo de despliegue, preservar calidad radiométrica y garantizar robustez ante fallos. 
+
+Se implementó un algoritmo NSGA-II adaptado, con tres funciones objetivo principales: tiempo medio entre observaciones, costo equivalente de la constelación y error de fusión esperado. La optimización exploró un espacio de más de 500 configuraciones orbitales y de recursos. 
+
+En muchos casos estudiados, las soluciones Pareto revelan que constelaciones de 12-15 unidades ofrecen el mejor compromiso. No obstante, cabe matizar que incrementos más allá de este rango generan rendimientos marginales decrecientes, especialmente cuando se consideran restricciones de presupuesto y complejidad operativa.
+
+\begin{table}[h]
+\centering
+\caption{Escenarios de simulación considerados en el proceso de optimización}
+\label{tab:escenarios_simulacion}
+\begin{tabular}{lccc}
+\hline
+\textbf{Escenario} & \textbf{Nº Nanosats} & \textbf{Altitud (km)} & \textbf{Revisita Híbrida (h)} \\
+\hline
+Baseline (solo VRSS) & 0 & 640 & 96-120 \\
+Híbrido Conservador & 8 & 550 & 12-18 \\
+Híbrido Óptimo & 14 & 520 & 2.8-4.5 \\
+Híbrido Agresivo & 24 & 500 & <2 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Fusión de datos multi-resolución}
+
+Lejos de ser un problema puramente geométrico, la integración efectiva exige manejar diferencias fundamentales en resoluciones espaciales, temporales y radiométricas. Aquí es donde las técnicas avanzadas de entrega rápida de información cobran especial relevancia \cite{Chan2024}.
+
+Se adoptó un esquema de fusión en dos etapas. Primero, una alineación temporal mediante interpolación kalmaniana ponderada por incertidumbre. Posteriormente, una red neuronal convolucional ligera (CNN) entrenada para combinar el detalle estructural del VRSS con la actualización frecuente de los nanosatélites. 
+
+Particularmente llamativo es el hecho de que el uso de crosslinks y procesamiento distribuido, inspirado en propuestas recientes, permite realizar parte de esta fusión directamente en órbita, reduciendo drásticamente la latencia de entrega. Esto no solo mejora la continuidad aparente del producto final, sino que también descarga significativamente las estaciones terrestres.
+
+Aunque los resultados preliminares son prometedores, persisten limitaciones relacionadas con la calibración cruzada entre sensores de diferente tecnología. Estas brechas, identificadas durante el modelado, guían directamente las recomendaciones de implementación práctica que se discuten en secciones posteriores.
